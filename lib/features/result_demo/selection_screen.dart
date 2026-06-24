@@ -18,10 +18,10 @@ class SelectionScreen extends StatelessWidget {
       ];
     } else if (type == 'color') {
       options = [
-        {'name': 'Crimson Red', 'icon': Icons.palette, 'value': 'Red', 'color': Colors.red},
-        {'name': 'Emerald Green', 'icon': Icons.palette, 'value': 'Green', 'color': Colors.green},
-        {'name': 'Royal Blue', 'icon': Icons.palette, 'value': 'Blue', 'color': Colors.blue},
-        {'name': 'Amber Orange', 'icon': Icons.palette, 'value': 'Orange', 'color': Colors.orange},
+        {'name': 'Đỏ', 'icon': Icons.palette, 'value': 'Đỏ', 'color': Colors.red},
+        {'name': 'Xanh lá', 'icon': Icons.palette, 'value': 'Xanh lá', 'color': Colors.green},
+        {'name': 'Xanh dương', 'icon': Icons.palette, 'value': 'Xanh dương', 'color': Colors.blue},
+        {'name': 'Vàng', 'icon': Icons.palette, 'value': 'Vàng', 'color': Colors.orange},
       ];
     } else if (type == 'density') {
       options = [

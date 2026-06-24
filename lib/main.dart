@@ -21,6 +21,8 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       title: 'Flutter Routing Demo',
       theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
       routerConfig: router,
       debugShowCheckedModeBanner: false,
     );

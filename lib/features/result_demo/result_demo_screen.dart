@@ -11,18 +11,18 @@ class ResultDemoScreen extends StatefulWidget {
 
 class _ResultDemoScreenState extends State<ResultDemoScreen> {
   String _selectedRole = 'Employee';
-  String _selectedColor = 'Blue';
+  String _selectedColor = 'Chưa chọn';
   String _selectedDensity = 'Medium';
 
   Color _getColor(String colorName) {
     switch (colorName) {
-      case 'Red':
+      case 'Đỏ':
         return Colors.red;
-      case 'Green':
+      case 'Xanh lá':
         return Colors.green;
-      case 'Blue':
+      case 'Xanh dương':
         return Colors.blue;
-      case 'Orange':
+      case 'Vàng':
         return Colors.orange;
       default:
         return Colors.grey;
