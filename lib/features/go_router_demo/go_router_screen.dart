@@ -101,22 +101,31 @@ class _GoRouterScreenState extends State<GoRouterScreen> {
               children: [
                 const Text('Category: ', style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(width: 8),
-                ChoiceChip(
-                  label: const Text('All'),
-                  selected: _selectedCategory == 'All',
-                  onSelected: (_) => setState(() => _selectedCategory = 'All'),
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  label: const Text('Electronics'),
-                  selected: _selectedCategory == 'Electronics',
-                  onSelected: (_) => setState(() => _selectedCategory = 'Electronics'),
-                ),
-                const SizedBox(width: 8),
-                ChoiceChip(
-                  label: const Text('Accessories'),
-                  selected: _selectedCategory == 'Accessories',
-                  onSelected: (_) => setState(() => _selectedCategory = 'Accessories'),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ChoiceChip(
+                          label: const Text('All'),
+                          selected: _selectedCategory == 'All',
+                          onSelected: (_) => setState(() => _selectedCategory = 'All'),
+                        ),
+                        const SizedBox(width: 8),
+                        ChoiceChip(
+                          label: const Text('Electronics'),
+                          selected: _selectedCategory == 'Electronics',
+                          onSelected: (_) => setState(() => _selectedCategory = 'Electronics'),
+                        ),
+                        const SizedBox(width: 8),
+                        ChoiceChip(
+                          label: const Text('Accessories'),
+                          selected: _selectedCategory == 'Accessories',
+                          onSelected: (_) => setState(() => _selectedCategory = 'Accessories'),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
