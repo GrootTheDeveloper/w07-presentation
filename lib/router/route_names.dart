@@ -1,6 +1,7 @@
 class RoutePaths {
   static const String home = '/';
   static const String navigatorBasic = '/navigator-basic';
+  static const String navigatorSubDetails = '/navigator-sub-details';
   static const String namedRoute = '/named-route';
   static const String namedDetails = '/named-details';
   static const String goRouterDemo = '/go-router-demo';
@@ -14,6 +15,7 @@ class RoutePaths {
 class RouteNames {
   static const String home = 'home';
   static const String navigatorBasic = 'navigatorBasic';
+  static const String navigatorSubDetails = 'navigatorSubDetails';
   static const String namedRoute = 'namedRoute';
   static const String namedDetails = 'namedDetails';
   static const String goRouterDemo = 'goRouterDemo';

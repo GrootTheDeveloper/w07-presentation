@@ -4,6 +4,7 @@ import 'package:demopresent/features/auth/profile_screen.dart';
 import 'package:demopresent/features/go_router_demo/go_router_details_screen.dart';
 import 'package:demopresent/features/go_router_demo/go_router_screen.dart';
 import 'package:demopresent/features/home/home_screen.dart';
+import 'package:demopresent/features/named_route_demo/feedback_model.dart';
 import 'package:demopresent/features/named_route_demo/named_details_screen.dart';
 import 'package:demopresent/features/named_route_demo/named_route_screen.dart';
 import 'package:demopresent/features/navigator_demo/navigator_basic_screen.dart';
@@ -37,7 +38,10 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         name: RouteNames.namedDetails,
         path: RoutePaths.namedDetails,
-        builder: (context, state) => const NamedDetailsScreen(),
+        builder: (context, state) {
+          final feedback = state.extra as FeedbackModel?;
+          return NamedDetailsScreen(feedback: feedback);
+        },
       ),
       GoRoute(
         name: RouteNames.goRouterDemo,
@@ -49,8 +53,17 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: RoutePaths.goRouterDetails,
         builder: (context, state) {
           final id = state.uri.queryParameters['id'];
-          final source = state.uri.queryParameters['source'];
-          return GoRouterDetailsScreen(id: id, source: source);
+          final name = state.uri.queryParameters['name'] ?? 'Unknown';
+          final price = state.uri.queryParameters['price'] ?? '0.00';
+          final category = state.uri.queryParameters['category'] ?? 'General';
+          final source = state.uri.queryParameters['source'] ?? 'direct';
+          return GoRouterDetailsScreen(
+            id: id,
+            name: name,
+            price: price,
+            category: category,
+            source: source,
+          );
         },
       ),
       GoRoute(

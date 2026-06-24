@@ -1,8 +1,7 @@
-import 'package:demopresent/features/navigator_demo/basic_sub_details_screen.dart';
 import 'package:flutter/material.dart';
 
-class BasicDetailsScreen extends StatelessWidget {
-  const BasicDetailsScreen({super.key});
+class BasicSubDetailsScreen extends StatelessWidget {
+  const BasicSubDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +9,7 @@ class BasicDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Details (Level 1)'),
+        title: const Text('Sub-Details (Level 2)'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -18,16 +17,16 @@ class BasicDetailsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Icon(Icons.layers, size: 80, color: Colors.blue),
+            const Icon(Icons.stacked_bar_chart, size: 80, color: Colors.purple),
             const SizedBox(height: 24),
             Text(
-              'You are at Level 1!',
+              'You are at Level 2!',
               style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
             const Text(
-              'A new route has been pushed on top of the Home Dashboard.',
+              'This is the top-most screen in the Navigator 1.0 backstack right now.',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 32),
@@ -43,7 +42,9 @@ class BasicDetailsScreen extends StatelessWidget {
                 children: [
                   Text('LIFO Stack Representation', style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold)),
                   const SizedBox(height: 12),
-                  _buildStackItem('[TOP] Level 1: Details Page', Colors.blue),
+                  _buildStackItem('[TOP] Level 2: Sub-Details', Colors.purple),
+                  const SizedBox(height: 6),
+                  _buildStackItem('Level 1: Details Page', Colors.blue),
                   const SizedBox(height: 6),
                   _buildStackItem('[BOTTOM] Home Dashboard', Colors.grey),
                 ],
@@ -51,27 +52,26 @@ class BasicDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
+            OutlinedButton.icon(
+              onPressed: () {
+                // Pop once to return to Level 1 (Details Page)
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back),
+              label: const Text('Pop once (Go to Level 1)'),
+            ),
+            const SizedBox(height: 12),
             ElevatedButton.icon(
               onPressed: () {
-                // Push to Level 2 (Sub-details)
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const BasicSubDetailsScreen(),
-                  ),
-                );
+                // Pop back to root (Home)
+                Navigator.of(context).popUntil((route) => route.isFirst);
               },
-              icon: const Icon(Icons.arrow_forward),
-              label: const Text('Push to Level 2 (Sub-Details)'),
+              icon: const Icon(Icons.home),
+              label: const Text('Pop Until First (Go to Home)'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: theme.colorScheme.primary,
                 foregroundColor: theme.colorScheme.onPrimary,
               ),
-            ),
-            const SizedBox(height: 12),
-            OutlinedButton.icon(
-              onPressed: () => Navigator.of(context).pop(),
-              icon: const Icon(Icons.arrow_back),
-              label: const Text('Pop once (Go to Home)'),
             ),
           ],
         ),
